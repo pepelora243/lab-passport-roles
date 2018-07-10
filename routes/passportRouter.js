@@ -53,4 +53,20 @@ router.post('/signup', (req, res, next) => {
     })
 })
 
+router.get('/login', (req, res, next) => {
+  res.render('passport/login');
+});
+
+router.post("/login", passport.authenticate("local", {
+  successRedirect: "/",
+  failureRedirect: "/login",
+  failureFlash: true,
+  passReqToCallback: true
+})
+)
+
+router.get(`/private/:id`,(req,res) =>{
+  User.findByIdAndRemove(req.params.id, ()=> res.redirect("/private"));
+})
+
 module.exports = router;

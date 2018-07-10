@@ -1,0 +1,14 @@
+<h2>Usuarios</h2>
+<ul>
+{{#each users}}
+    <li>
+        <div>
+            <h2>{{username}}</h2>
+            <a href="/private/{{id}}">Delete</a>
+        </div>
+
+
+    </li>
+
+    {{/each}}
+</ul>
